@@ -1,4 +1,4 @@
-from Flask import Flask,render_template,request
+from flask import Flask,render_template,request
 import pandas as pd
 import pickle
 import numpy as np
@@ -22,7 +22,8 @@ def predict():
     kms_driven=int(request.form.get('kilo_driven'))
     prediction=model.predict(pd.DataFrame([[car_model,company,year,kms_driven,fuel_type]],columns=['name','company','year','kms_driven','fuel_type']))
     return str(np.round(prediction[0],2))
-if __name__=="__main__":
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
+
 
 
