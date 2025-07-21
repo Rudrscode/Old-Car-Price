@@ -1,16 +1,150 @@
-.{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.bg-dark{
-	background-color: #75767B;
+:root {
+  --primary: #00d4ff;
+  --accent: #2a72e8;
+  --glass-bg: rgba(17,24,39,0.55);
+  --glass-blur: 18px;
+  --input-bg: rgba(255,255,255,0.066);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  --white: #f1f1f1;
+  --muted: #ced5e0;
 }
 
-
-.mt-50{
-	margin-top: 50px;
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background: linear-gradient(135deg, #1e2636 0%, #133a43 100%);
+  box-sizing: border-box;
 }
-#canvas{
-    border: 2px solid black;
+
+.background {
+  display: none; /* Not needed for website view */
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.glass-card {
+  width: 480px;
+  max-width: 96vw;
+  margin: 25px 0;
+  padding: 2.7rem 2rem 2rem 2rem;
+  border-radius: 22px;
+  background: var(--glass-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: fadeInCard 0.4s;
+}
+
+@keyframes fadeInCard {
+  from { transform: translateY(40px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.3rem;
+}
+
+header h1 {
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.25em;
+  filter: drop-shadow(0 0 6px #00d4ff44);
+}
+header p {
+  color: var(--muted);
+  font-size: 1.07rem;
+  margin-bottom: 0;
+}
+
+form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.15em;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.2em;
+}
+
+select, input[type="number"] {
+  outline: none;
+  background: #181c28;
+  color: #f1f1f1;
+  border: 1.5px solid #00d4ff;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 0.66em 1em;
+  transition: border-color 0.23s, box-shadow 0.23s;
+}
+select:focus, input[type="number"]:focus {
+  border: 1.3px solid var(--primary);
+  box-shadow: 0 0 8px #00d4ff44;
+}
+
+.btn-glow {
+  margin-top: 0.7em;
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #0099ff 20%, #00d4ff 100%);
+  color: #ffffff;
+  padding: 0.95em;
+  transition: background 0.3s, box-shadow 0.23s, transform 0.11s;
+  box-shadow: 0 4px 16px 1px #00d4ff2c;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+}
+.btn-glow:hover, .btn-glow:focus {
+  background: linear-gradient(90deg, #00d4ff 8%, #2a92ff 95%);
+  box-shadow: 0 7px 32px 0 #00d4ff77;
+  transform: translateY(-1px) scale(1.018);
+}
+
+.prediction {
+  text-align: center;
+  margin-top: 1.2em;
+  font-size: 1.22rem;
+  font-weight: bold;
+  color: var(--primary);
+  min-height: 2.3em;
+  transition: color 0.3s;
+}
+.prediction span {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* Responsive tweaks for tablets and below */
+@media (max-width: 600px) {
+  .glass-card {
+    padding: 1.5rem 0.5rem;
+    width: 98vw;
+    margin: 10px 0;
+  }
+  header h1 { font-size: 1.22rem; }
+  .form-group label { font-size: 0.97rem;}
+}
+
+/* A little extra breathing room on XXL screens */
+@media (min-width: 1200px) {
+  .glass-card {
+    width: 500px;
+  }
 }
